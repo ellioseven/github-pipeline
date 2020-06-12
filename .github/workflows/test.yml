@@ -22,7 +22,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: docker-compose build
-    - run: 
+    - run: |
         docker-compose run --rm api yarn install
         docker-compose run --rm ui yarn install
     - run: docker-compose run --rm cypress yarn test
