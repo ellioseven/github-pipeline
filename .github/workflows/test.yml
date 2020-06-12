@@ -18,6 +18,4 @@ jobs:
     - run: docker-compose build
     - run: docker-compose run --rm api yarn install
     - run: docker-compose run --rm ui yarn install
-    - run: docker-compose up -d api ui
-    - run: docker ps -a
-    - run: sleep 5 && docker-compose run --rm cypress yarn test
+    - run: docker-compose run --rm cypress yarn test
