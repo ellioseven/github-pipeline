@@ -1,5 +1,9 @@
 describe("Tasks", () => {
 
+  Cypress.Screenshot.defaults({
+    screenshotOnRunFailure: false
+  });
+
   it ("Adds a task", () => {
     cy.server()
     cy.visit("/")
