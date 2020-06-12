@@ -1,0 +1,38 @@
+version: "2"
+services:
+  ui:
+    network_mode: "host"
+    image: "node:12"
+    working_dir: "/srv"
+    user: "node:node"
+    command: ["yarn", "start"]
+    environment:
+      PATH: "/srv/node_modules/.bin:$PATH"
+    volumes:
+      - "./ui:/srv"
+      - "./.cache:/home/node/.cache"
+  api:
+    network_mode: "host"
+    image: "node:12"
+    working_dir: "/srv"
+    user: "node:node"
+    command: ["yarn", "start"]
+    environment:
+      PATH: "/srv/node_modules/.bin:$PATH"
+    volumes:
+      - "./api:/srv"
+      - "./.cache:/home/node/.cache"
+  cypress:
+    network_mode: "host"
+    user: "node:node"
+    image: "cypress/browsers:node12.16.2-chrome81-ff75"
+    environment:
+      PATH: "/e2e/node_modules/.bin:$PATH"
+    shm_size: 2g
+    working_dir: "/e2e"
+    depends_on:
+      - api
+      - ui
+    volumes:
+      - "./ui:/e2e"
+      - "./.cache:/home/node/.cache"
