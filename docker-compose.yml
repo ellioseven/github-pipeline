@@ -1,6 +1,7 @@
 version: "2"
 services:
   ui:
+    network_mode: "host"
     ports:
       - 3000:3000
     image: "node:12"
@@ -12,6 +13,7 @@ services:
       - "./ui:/srv"
       - "./.cache:/home/node/.cache"
   api:
+    network_mode: "host"
     ports:
       - 4000:4000
     image: "node:12"
@@ -23,6 +25,7 @@ services:
       - "./api:/srv"
       - "./.cache:/home/node/.cache"
   cypress:
+    network_mode: "host"
     image: "cypress/included:4.8.0"
     environment:
       PATH: "/e2e/node_modules/.bin:$PATH"
