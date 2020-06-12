@@ -1,7 +1,7 @@
 version: "2"
 services:
   ui:
-    ports:
+    expose:
       - 3000
     network_mode: "host"
     image: "node:12"
@@ -14,7 +14,7 @@ services:
       - "./ui:/srv"
       - "./.cache:/home/node/.cache"
   api:
-    ports:
+    expose:
       - 4000
     network_mode: "host"
     image: "node:12"
