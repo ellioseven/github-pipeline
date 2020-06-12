@@ -4,6 +4,5 @@
   "viewportHeight": 800,
   "pageLoadTimeout": 100000,
   "numTestsKeptInMemory": 0,
-  "video": false,
-  "screenshotOnRunFailure": false
+  "video": false
 }
