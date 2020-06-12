@@ -29,7 +29,7 @@ services:
   cypress:
     network_mode: "host"
     user: "node:node"
-    image: "cypress/browsers:node12.16.2-chrome81-ff75"
+    image: "cypress/included:4.8.0"
     environment:
       PATH: "/e2e/node_modules/.bin:$PATH"
     shm_size: 2g
