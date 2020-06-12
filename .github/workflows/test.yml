@@ -16,8 +16,8 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: docker-compose build
-    - run: cd ui && yarn install
-    - run: cd api && yarn install
-    - run: ip address
+    - run: docker-compose run --rm api yarn install
+    - run: docker-compose run --rm ui yarn install
     - run: docker-compose up -d api ui
-    - run: curl http://0.0.0.0:4000/tasks/all
+    - run: docker ps -a
+    - run: curl http://localhost:4000/tasks/all

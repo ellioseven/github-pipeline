@@ -1,12 +1,10 @@
 version: "2"
 services:
   ui:
-    expose:
-      - 3000
-    network_mode: "host"
+    ports:
+      - 3000:3000
     image: "node:12"
     working_dir: "/srv"
-    user: "node:node"
     command: ["yarn", "start"]
     environment:
       PATH: "/srv/node_modules/.bin:$PATH"
@@ -14,12 +12,10 @@ services:
       - "./ui:/srv"
       - "./.cache:/home/node/.cache"
   api:
-    expose:
-      - 4000
-    network_mode: "host"
+    ports:
+      - 4000:4000
     image: "node:12"
     working_dir: "/srv"
-    user: "node:node"
     command: ["yarn", "start"]
     environment:
       PATH: "/srv/node_modules/.bin:$PATH"
@@ -27,8 +23,6 @@ services:
       - "./api:/srv"
       - "./.cache:/home/node/.cache"
   cypress:
-    network_mode: "host"
-    user: "node:node"
     image: "cypress/included:4.8.0"
     environment:
       PATH: "/e2e/node_modules/.bin:$PATH"
