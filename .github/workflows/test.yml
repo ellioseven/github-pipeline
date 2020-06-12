@@ -24,4 +24,8 @@ jobs:
     - run: docker-compose build
     - run: cd ui && yarn install
     - run: cd api && yarn install
-    - run: docker-compose run --rm cypress yarn test
+    - run: docker-compose up -d
+    - name: Cypress run
+      uses: cypress-io/github-action@v1
+      with:
+        project: ./ui
