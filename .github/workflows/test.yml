@@ -22,7 +22,6 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: docker-compose build
-    - run: |
-        docker-compose run --rm api yarn install
-        docker-compose run --rm ui yarn install
+    - run: cd ui && yarn install
+    - run: cd api && yarn install
     - run: docker-compose run --rm cypress yarn test
